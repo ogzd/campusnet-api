@@ -24,64 +24,49 @@ User CN = Api.login(cn_username, cn_password); // Right now, you can use API onl
 
 ### How to access course/group info
 
-- For accessing course/group messages:
-
 ```java
+// to access list of messages sent for a course/group
 List<Message> messages = CN.getElementByName("02157 Functional programming")
                            .getMessageAccessor()
                            .getNewestMessages();
-```
 
-- For accessing course/group calendar:
-
-```java
+// to access list of appointments in an interval of a course/group
 List<Appointment> appointments = CN.getElementByName("02157 Functional programming")
                                    .getCalendarAccessor()
                                    .getAppointments(startDate, endDate)
-```
 
-- For accessing course/group files:
-
-```java
+// to access Top folder of a course/group
 Folder rootFolder = CN.getElementByName("02157 Functional programming")
                       .getFileAccessor()
                       .getRootFolder();
-```
-
-- For downloading/uploading files to a specific folder:
-
-```java
-// to download a file 
+                      
+// to download a file from a folder
 rootFolder.getSubFolderByName("A subfolder name") // you can navigate between folders.
           .getFileByName("A file name") // you can access a File in that Folder.
           .getFileVersion(1) // you can access A FileVersion of that File.
           .getBytes(); // you can download that version as byte array. 
 
-// to upload a file
+// to upload a file in a folder
 rootFolder.upload("file name", fileContent); // fileContent should be byte array. 
 
 ```
 
 ### How to access user info:
 
-- You can access basic user info such as email, id, name, language:
 ```java
+// to access basic user info such as email, id, name and language
 UserInfo userInfo = CN.getInfoAccessor()
                       .getUserInfo();
-```
-
-- You can also access overall data for messages/appointments/files:
-
-```java
+                      
+// to access upcoming appointments for the user
 List<Appointment> appointments = CN.getCalendarAccessor()
                                    .getUpcomingAppointments(first, amount); // starting from _first_ calendar entry, returns _amount_ of calendar entries.
-				   
+
+// to access messages of the user				   
 List<Message> messages = CN.getMessageAccessor()
                            .getNewestMessages(first, amount); // starting from _first_ message, returns _amount_ of messages.
-```
-- You can also get poll information for the current user:
 
-```java
+// to access active polls the user can see/vote
 List<Poll> activePolls = CN.getPollAccessor()
                            .getActivePolls(first, amount); // you get the idea.
                            
@@ -101,16 +86,12 @@ CN.getPollAccessor()
 
 ### How to access education programme info:
 
-- For list of education programmes the user has attended:
-
 ```java
+// to access list of education programmes that the user attended
 List<EducationProgramme> CN.getEducationProgrammeAccessor()
                            .getPrograms();
-```
 
-- For accessing exam results/grades in specific programme:
-
-```java
+// to access a grade of a specific course in a specific programme
 EducationProgramme program = ...;
 List<ExamResult> examResults = program.getExamResults();
 String grade = examResult.getGrade();
