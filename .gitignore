@@ -1,0 +1,4 @@
+# ignore java class files
+*.class
+
+.settings/*
