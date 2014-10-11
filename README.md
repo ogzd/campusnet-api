@@ -64,6 +64,7 @@ rootFolder.upload("file name", fileContent); // fileContent should be byte array
 
 ### How to access user info:
 
+- You can access basic user info such as email, id, name, language:
 ```java
 UserInfo userInfo = CN.getInfoAccessor()
 		      .getUserInfo();
@@ -78,4 +79,39 @@ List<Appointment> appointments = CN.getCalendarAccessor()
 List<Message> messages = CN.getMessageAccessor()
                            .getNewestMessages(first, amount); // starting from _first_ message, returns _amount_ of messages.
 ```
+- You can also get poll information for the current user:
+
+```java
+List<Poll> activePolls = CN.getPollAccessor()
+                           .getActivePolls(first, amount); // you get the idea.
+```
+
+### How to access education programme info:
+
+- For list of education programmes the user has attended:
+
+```java
+List<EducationProgramme> CN.getEducationProgrammeAccessor()
+                           .getPrograms();
+```
+
+- For accessing exam results/grades in specific programme:
+
+```java
+EducationProgramme program = ...;
+List<ExamResult> examResults = program.getExamResults();
+String grade = examResult.getGrade();
+```
+
+### TODO List
+
+- API supports all other CampusNet universities.
+- API supports course/group participant info access.
+- API supports file/course/group search.
+- API supports cafeteria info access.
+- API supports voting for polls.
+- API supports overall file access. (currently we can access files of a course/group.)
+- API contains convenient methods such as `getExamResultOf(String courseName)`, `getProgrammeByName(String programmeName)` etc.  
+
+
 
