@@ -21,3 +21,13 @@ CampusNet API has several functionalities around extracting course data, group d
 ```java
 User CN = Api.login(cn_username, cn_password); // Right now, you can use API only for DTU access.
 ```
+
+### How to access course/group info
+
+- For accessing course messages:
+
+```java
+List<Message> messages = CN.getElementByName("02157 Functional programming")
+				  				   .getMessageAccessor()
+				  				   .getNewestMessages();
+```
