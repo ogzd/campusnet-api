@@ -84,6 +84,19 @@ List<Message> messages = CN.getMessageAccessor()
 ```java
 List<Poll> activePolls = CN.getPollAccessor()
                            .getActivePolls(first, amount); // you get the idea.
+                           
+// to see poll options
+CN.getPollAccessor()
+  .getPoll(pollId)
+  .getPollOptions(); // returns list of PollOption instances.
+  
+// to vote for a poll
+CN.getPollAccessor()
+  .vote(pollId, pollOptionIds);
+  
+// to see the poll result
+CN.getPollAccessor()
+  .getPollResult(pollId);
 ```
 
 ### How to access education programme info:
@@ -109,7 +122,6 @@ String grade = examResult.getGrade();
 - API supports course/group participant info access.
 - API supports file/course/group search.
 - API supports cafeteria info access.
-- API supports voting for polls.
 - API supports overall file access. (currently we can access files of a course/group.)
 - API contains convenient methods such as `getExamResultOf(String courseName)`, `getProgrammeByName(String programmeName)` etc.  
 
