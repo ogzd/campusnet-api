@@ -24,10 +24,40 @@ User CN = Api.login(cn_username, cn_password); // Right now, you can use API onl
 
 ### How to access course/group info
 
-- For accessing course messages:
+- For accessing course/group messages:
 
 ```java
 List<Message> messages = CN.getElementByName("02157 Functional programming")
 			   			   .getMessageAccessor()
 			   			   .getNewestMessages();
+```
+
+- For accessing course/group calendar:
+
+```java
+List<Appointment> appointments = CN.getElementByName("02157 Functional programming")
+				  		   .getCalendarAccessor()
+				  		   .getAppointments(startDate, endDate)
+```
+
+- For accessing course/group files:
+
+```java
+Folder rootFolder = CN.getElementByName("02157 Functional programming")
+				  		   .getFileAccessor()
+				  		   .getRootFolder();
+```
+
+- For downloading/uploading files to a specific folder:
+
+```java
+// to download a file 
+rootFolder.getSubFolderByName("A subfolder name") // you can navigate between folders.
+	  .getFileByName("A file name") // you can access a File in that Folder.
+	  .getFileVersion(1) // you can access A FileVersion of that File.
+	  .getBytes(); // you can download that version as byte array. 
+
+// to upload a file
+rootFolder.upload("file name", fileContent); // fileContent should be byte array. 
+
 ```
