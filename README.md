@@ -1,4 +1,4 @@
-campusnet-api
+CampusNet-api
 =============
 
 CampusNet API for java applications
