@@ -28,6 +28,6 @@ User CN = Api.login(cn_username, cn_password); // Right now, you can use API onl
 
 ```java
 List<Message> messages = CN.getElementByName("02157 Functional programming")
-				  				   .getMessageAccessor()
-				  				   .getNewestMessages();
+			   .getMessageAccessor()
+			   .getNewestMessages();
 ```
