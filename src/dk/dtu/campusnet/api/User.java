@@ -19,7 +19,7 @@ public class User {
 
 	private Map<String, Element> elements;
 	
-	public User() {
+	protected User() {
 		loadCoursesAndGroups();
 	}
 	
