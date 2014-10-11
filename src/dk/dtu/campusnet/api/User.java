@@ -26,9 +26,8 @@ public class User {
 	private void loadCoursesAndGroups() {
 		Document doc = Request.get("https://www.campusnet.dtu.dk/data/CurrentUser/Elements");
 		
-		ElementsReader reader = Reader.load(ElementsReader.class, doc);
-		
-		elements = reader.getElements();
+		elements = Reader.load(ElementsReader.class, doc)
+						 .getElements();
 		
 		for(Element element : elements.values()) {
 			loadSubElements(element);
@@ -40,9 +39,8 @@ public class User {
 		String parentElementId = parentElement.getElementId();
 		Document doc = Request.get(String.format("https://www.campusnet.dtu.dk/data/CurrentUser/Elements/%s/Elements", parentElementId));
 		
-		ElementsReader reader = Reader.load(ElementsReader.class, doc);
-		
-		Map<String, Element> subElements = reader.getSubElements();
+		Map<String, Element> subElements = Reader.load(ElementsReader.class, doc)
+												 .getSubElements();
 		
 		for(Element subElement : subElements.values()) {
 			parentElement.addElement(subElement);
