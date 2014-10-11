@@ -61,3 +61,21 @@ rootFolder.getSubFolderByName("A subfolder name") // you can navigate between fo
 rootFolder.upload("file name", fileContent); // fileContent should be byte array. 
 
 ```
+
+### How to access user info:
+
+```java
+UserInfo userInfo = CN.getInfoAccessor()
+		      .getUserInfo();
+```
+
+- You can also access overall data for messages/appointments/files:
+
+```java
+List<Appointment> appointments = CN.getCalendarAccessor()
+				   .getUpcomingAppointments(first, amount); // starting from _first_ calendar entry, returns _amount_ of calendar entries.
+				   
+List<Message> messages = CN.getMessageAccessor()
+                           .getNewestMessages(first, amount); // starting from _first_ message, returns _amount_ of messages.
+```
+
