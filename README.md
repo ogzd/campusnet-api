@@ -103,7 +103,7 @@ List<ExamResult> examResults = program.getExamResults();
 String grade = examResult.getGrade();
 ```
 
-### TODO List
+### To-do List
 
 - API supports all other CampusNet universities.
 - API supports course/group participant info access.
@@ -113,5 +113,7 @@ String grade = examResult.getGrade();
 - API supports overall file access. (currently we can access files of a course/group.)
 - API contains convenient methods such as `getExamResultOf(String courseName)`, `getProgrammeByName(String programmeName)` etc.  
 
+### Contact
 
+[Oguz Demir](mailto:oguzdemir3@gmail.com)
 
