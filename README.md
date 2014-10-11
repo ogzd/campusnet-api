@@ -28,24 +28,24 @@ User CN = Api.login(cn_username, cn_password); // Right now, you can use API onl
 
 ```java
 List<Message> messages = CN.getElementByName("02157 Functional programming")
-			   			   .getMessageAccessor()
-			   			   .getNewestMessages();
+                           .getMessageAccessor()
+                           .getNewestMessages();
 ```
 
 - For accessing course/group calendar:
 
 ```java
 List<Appointment> appointments = CN.getElementByName("02157 Functional programming")
-				  		   .getCalendarAccessor()
-				  		   .getAppointments(startDate, endDate)
+                                   .getCalendarAccessor()
+                                   .getAppointments(startDate, endDate)
 ```
 
 - For accessing course/group files:
 
 ```java
 Folder rootFolder = CN.getElementByName("02157 Functional programming")
-				  		   .getFileAccessor()
-				  		   .getRootFolder();
+                      .getFileAccessor()
+                      .getRootFolder();
 ```
 
 - For downloading/uploading files to a specific folder:
@@ -53,9 +53,9 @@ Folder rootFolder = CN.getElementByName("02157 Functional programming")
 ```java
 // to download a file 
 rootFolder.getSubFolderByName("A subfolder name") // you can navigate between folders.
-	  .getFileByName("A file name") // you can access a File in that Folder.
-	  .getFileVersion(1) // you can access A FileVersion of that File.
-	  .getBytes(); // you can download that version as byte array. 
+          .getFileByName("A file name") // you can access a File in that Folder.
+          .getFileVersion(1) // you can access A FileVersion of that File.
+          .getBytes(); // you can download that version as byte array. 
 
 // to upload a file
 rootFolder.upload("file name", fileContent); // fileContent should be byte array. 
@@ -67,14 +67,14 @@ rootFolder.upload("file name", fileContent); // fileContent should be byte array
 - You can access basic user info such as email, id, name, language:
 ```java
 UserInfo userInfo = CN.getInfoAccessor()
-		      .getUserInfo();
+                      .getUserInfo();
 ```
 
 - You can also access overall data for messages/appointments/files:
 
 ```java
 List<Appointment> appointments = CN.getCalendarAccessor()
-				   .getUpcomingAppointments(first, amount); // starting from _first_ calendar entry, returns _amount_ of calendar entries.
+                                   .getUpcomingAppointments(first, amount); // starting from _first_ calendar entry, returns _amount_ of calendar entries.
 				   
 List<Message> messages = CN.getMessageAccessor()
                            .getNewestMessages(first, amount); // starting from _first_ message, returns _amount_ of messages.
