@@ -6,10 +6,12 @@ import com.google.common.collect.Maps;
 
 import dk.dtu.campusnet.api.access.ElementCalendarAccessor;
 import dk.dtu.campusnet.api.access.ElementMessageAccessor;
+import dk.dtu.campusnet.api.access.ElementParticipantsAccessor;
 import dk.dtu.campusnet.api.access.FileAccessor;
 import dk.dtu.campusnet.api.access.ICalendarAccessor;
 import dk.dtu.campusnet.api.access.IFileAccessor;
 import dk.dtu.campusnet.api.access.IMessageAccessor;
+import dk.dtu.campusnet.api.access.IParticipantsAccessor;
 
 public class Element {
 
@@ -39,6 +41,10 @@ public class Element {
 	
 	public IMessageAccessor getMessageAccessor() {
 		return new ElementMessageAccessor(elementId);
+	}
+	
+	public IParticipantsAccessor getParticipantsAccessor() {
+		return new ElementParticipantsAccessor(elementId);
 	}
 	
 	/**
