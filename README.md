@@ -49,6 +49,11 @@ rootFolder.getSubFolderByName("A subfolder name") // you can navigate between fo
 // to upload a file in a folder
 rootFolder.upload("file name", fileContent); // fileContent should be byte array. 
 
+
+// to access participants of a course/group
+List<UserInfo> users = CN.getElementByName("02157 Functional programming")
+                         .getParticipantsAccessor()
+                         .getUsers();
 ```
 
 ### How to access user info:
@@ -100,7 +105,7 @@ String grade = examResult.getGrade();
 ### To-do List
 
 - API supports all other CampusNet universities.
-- API supports course/group participant info access.
+- ~~API supports course/group participant info access.~~
 - API supports file/course/group search.
 - ~~API supports cafeteria info access.~~
 - API supports overall file access. (currently we can access files of a course/group.)
